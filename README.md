@@ -16,7 +16,7 @@ Se han usado las siguientes tecnologías:
 
 ## Ejecución
 
-Para llamar a los endpoints se necesita ejecutar el siguiente comando:
+Para lanzar el servidor se necesita ejecutar por consola el siguiente comando:
 
 * symfony server:start
 
@@ -29,7 +29,7 @@ Las rutas de los endpoints accesibles son las siguientes:
 
 Para la estructura general he usado el patrón MVC (Modelo-Vista-Controlador):
 
-![Alt text](img/Estructura.jpg "Estructura")
+![Alt text](img/Estructura.png "Estructura")
 
 Para el diseño del dominio he usado varios patrones:
 
@@ -41,7 +41,7 @@ Para el diseño del dominio he usado varios patrones:
   - Hd y Sd. Dado que una calidad de imagen no tiene sentido que se pueda crear varias veces, mediante estre patrón conseguimos crear una única instancia.
   - InFileSystemPersistence. Al simular ser una base de datos, la instancia del objeto debería ser siempre la misma.
 
-![Alt text](img/Dominio.jpg "Dominio")
+![Alt text](img/Dominio.png "Diseño")
 
 
 ## Otros posibles diseños y problemas
@@ -52,7 +52,7 @@ Otros posibles diseños de más general a más concreto son los siguientes:
 
 * **Typology pase a heredar directamente de Ad**. Es decir, crear una clase abstracta Ad y que cada Typology heredase de esta, consiguiendo clases concretas como AdFlat, AdChalet o AdGarage. Esto podría ahorrarnos el crear una jerarquía paralela en un proyecto tan pequeño, pero si tirasemos por esta estructura, condicionariamos mucho el diseño a futuros cambios. 
 
-* **Composite**. Para la funcionalidad que comprueba si es el anuncio es completo. Podríamos crear una interfaz ICheck, de la que heredase varias clases, una por cada comprobación que queremos hacer y otras que gestionasen de la forma que nosotros escogamos las comprobaciones que nosotros queramos. Como punto fuerte es que podrían modificarse dinamicamente las comprobaciones a relizar. Además se podrían reutilizar las comprobaciones y se vería de una forma más intuitiva con esta jerarquía. El problema es que necesitamos comprobar atributos únicos a cada tipo, por lo que no podríamos generalizar los parámetros a checkear de una forma sencilla.
+* **Composite**. Para la funcionalidad que comprueba si el anuncio es completo. Podríamos crear una interfaz ICheck, de la que heredase varias clases, una por cada comprobación que queremos hacer y otras que gestionasen de la forma que nosotros escogamos las comprobaciones que nosotros queramos. Como punto fuerte es que podrían modificarse dinamicamente las comprobaciones a relizar. Además se podrían reutilizar las comprobaciones y se vería de una forma más intuitiva con esta jerarquía. El problema es que necesitamos comprobar atributos únicos a cada tipo, por lo que no podríamos generalizar los parámetros a checkear de una forma sencilla.
 
 
 ## Consideraciones
