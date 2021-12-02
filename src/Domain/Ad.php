@@ -194,8 +194,22 @@ final class Ad {
         return $this->irrelevantSince;
     }
     
+    /**
+     * Get $score
+     * 
+     * @return int Score
+     */
     public function getScore(): ?int {
         return $this->score;
+    }
+
+    /**
+     * Get $id
+     * 
+     * @return int Id
+     */
+    public function getId(): ?int {
+        return $this->id;
     }
     #endregion
 }

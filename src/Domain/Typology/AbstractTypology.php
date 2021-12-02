@@ -33,7 +33,7 @@ abstract class AbstractTypology implements ITypology {
      * 
      * @return int Score to add
      */
-    public function getScoreWithWordsCount(int $wordsCount): int{
+    protected function getScoreWithWordsCount(int $wordsCount): int{
         return 0;
     }
 
@@ -62,7 +62,7 @@ abstract class AbstractTypology implements ITypology {
      * 
      * @return int Amount to add
      */
-    public function isComplete(Ad $ad): bool{
+    protected function isComplete(Ad $ad): bool{
         return false;
     }
 }

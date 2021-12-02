@@ -30,7 +30,7 @@ class Chalet extends AbstractTypology {
      * 
      * @return int Score to add
      */
-    public function getScoreWithWordsCount(int $wordsCount): int{
+    protected function getScoreWithWordsCount(int $wordsCount): int{
         if($wordsCount > 50){
             return 20;
         }
@@ -48,7 +48,7 @@ class Chalet extends AbstractTypology {
      * 
      * @return int Amount to add
      */
-    public function isComplete(Ad $ad): bool{
+    protected function isComplete(Ad $ad): bool{
         if((!is_null($ad->getDescription()) && !empty($ad->getDescription())) &&
         !empty($ad->getPictures()) &&
         !is_null($this->houseSize) &&

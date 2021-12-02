@@ -18,11 +18,19 @@ class Controller {
     public function getAllAdsByScore(): Response
     {
         $this->service = new AdService();  //* Not necessary in real app *
-
         $ads = $this->service->getAllAdsByScore();
         
+
+        // * Not necessary in real app *
+        $aux = '<h1>Anuncios relevantes ordenados</h1><p>Los anuncios relevantes que verá el cliente son los siguientes:</p><ul>';
+        foreach($ads as $ad){
+            $aux .= '<li>El anuncio con id: ' . $ad->getId() . ', que tiene score: ' . $ad->getScore() . '</li>';
+        }
+        $aux .= '</ul>';
+
+        
         return new Response(
-                '<html><body>Se obtuvieron: '.sizeof($ads).'</body></html>'
+                '<html><body>'. $aux .'</body></html>'
         );
     }
 
@@ -35,11 +43,10 @@ class Controller {
     public function updateAdsScore(): Response
     {
         $this->service = new AdService();  // * Not necessary in real app *
-
         $updateSuccesfull = $this->service->updateAdsScore();
 
         return new Response(
-                '<html><body>'.$updateSuccesfull ? 'Éxito' : 'Error'.'</body></html>'
+                '<html><body>'.$updateSuccesfull ? '<h1>Éxito</h1>' : '<h1>Error</h1>'.'</body></html>'
         );
     }
 
@@ -51,11 +58,19 @@ class Controller {
     public function getIrrelevantAds(): Response
     {
         $this->service = new AdService();  //* Not necessary in real app *
-
         $ads = $this->service->getIrrelevantAds();
+        
+
+        // * Not necessary in real app *
+        $aux = '<h1>Anuncios irrelevantes</h1><p>Los anuncios irrelevantes son los siguientes:</p><ul>';
+        foreach($ads as $ad){
+            $aux .= '<li>El anuncio con id: ' . $ad->getId() . ', que tiene score: ' . $ad->getScore() . '</li>';
+        }
+        $aux .= '</ul>';
+
 
         return new Response(
-                '<html><body>Se obtuvieron: '.sizeof($ads).'</body></html>'
+                '<html><body>' . $aux . '</body></html>'
         );
     }
 }

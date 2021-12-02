@@ -22,7 +22,7 @@ class Garage extends AbstractTypology {
      * 
      * @return int Amount to add
      */
-    public function isComplete(Ad $ad): bool{
+    protected function isComplete(Ad $ad): bool{
         if(!empty($ad->getPictures())){
             return true;
         }
