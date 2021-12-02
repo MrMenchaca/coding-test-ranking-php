@@ -9,6 +9,11 @@ use App\Domain\Ad;
 */
 class Flat extends AbstractTypology {
     
+    // ------------------------------- Constants -----------------------------------------
+    const WORDS_COUNT_BOT_LIMIT = 20;
+    const WORDS_COUNT_TOP_LIMIT = 49;
+
+
     // ----------------------------- Atributes ----------------------------------------
     private ?int $houseSize;
 
@@ -28,10 +33,10 @@ class Flat extends AbstractTypology {
      * @return int Score to add
      */
     protected function getScoreWithWordsCount(int $wordsCount): int{
-        if($wordsCount >= 20 && $wordsCount <= 49){
+        if($wordsCount >= self::WORDS_COUNT_BOT_LIMIT && $wordsCount <= self::WORDS_COUNT_TOP_LIMIT){
             return 10;
         }
-        else if ($wordsCount >= 50){
+        else if ($wordsCount > self::WORDS_COUNT_TOP_LIMIT){
             return 30;
         }
         return 0;

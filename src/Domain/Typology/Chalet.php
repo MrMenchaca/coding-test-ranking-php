@@ -9,6 +9,9 @@ use App\Domain\Ad;
 */
 class Chalet extends AbstractTypology {
     
+    // ------------------------------- Constants -----------------------------------------
+    const WORDS_COUNT_HIGHER_THAN = 50;
+
     // ----------------------------- Atributes ----------------------------------------
     private ?int $houseSize;
     private ?int $gardenSize;
@@ -31,7 +34,7 @@ class Chalet extends AbstractTypology {
      * @return int Score to add
      */
     protected function getScoreWithWordsCount(int $wordsCount): int{
-        if($wordsCount > 50){
+        if($wordsCount > self::WORDS_COUNT_HIGHER_THAN){
             return 20;
         }
         return 0;

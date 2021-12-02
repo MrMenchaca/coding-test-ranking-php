@@ -13,6 +13,13 @@ use App\Domain\Typology\ITypology;
  */
 final class Ad {
 
+    // ------------------------------- Constants -----------------------------------------
+    const PICTURE_WITHOUT_QUALITY = 10;
+    const HAS_DESCRIPTION = 5;
+    const DESCRIPTION_CONTAINS_WORD = 5;
+    const TOP_LIMIT = 100;
+    const BOT_LIMIT = 0;
+
     // ----------------------------- Atributes ----------------------------------------
     private int $id;
     private ITypology $typology;
@@ -77,7 +84,7 @@ final class Ad {
             }
         }
         else{
-            $sum -= 10;
+            $sum -= self::PICTURE_WITHOUT_QUALITY;
         }
         return $sum;
     }
@@ -93,7 +100,7 @@ final class Ad {
     private function calculateDescriptionScore(): int{
         $sum = 0;
         if(!is_null($this->description) && !empty($this->description)){
-            $sum += 5;
+            $sum += self::HAS_DESCRIPTION;
             $sum += $this->typology->getDescriptionScore($this->description);
             $sum += $this->calculateWordsArray();
         }
@@ -110,7 +117,7 @@ final class Ad {
         $sum = 0;
         foreach($wordsArray as $word){
             if(str_contains(strtolower($this->description), strtolower($word))){
-                $sum += 5;
+                $sum += self::DESCRIPTION_CONTAINS_WORD;
             }
         }
         return $sum;
@@ -124,11 +131,11 @@ final class Ad {
      * @return int Score modified to be within limits
      */
     private function checkLimits(int $score): int{
-        if ($score > 100){
-            $score = 100;
+        if ($score > self::TOP_LIMIT){
+            $score = self::TOP_LIMIT;
         }
-        else if ($score < 0){
-            $score = 0;
+        else if ($score < self::BOT_LIMIT){
+            $score = self::BOT_LIMIT;
         }
         return $score;
     }
