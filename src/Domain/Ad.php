@@ -40,7 +40,7 @@ final class Ad {
 
     // ---------------------------- Methods -------------------------------------------
     
-    #region Update Score
+    #region Update $score functionality
     /**
      * Calculates and update the new score based on three parameters:
      *   1. Quality pictures
@@ -194,5 +194,8 @@ final class Ad {
         return $this->irrelevantSince;
     }
     
+    public function getScore(): ?int {
+        return $this->score;
+    }
     #endregion
 }

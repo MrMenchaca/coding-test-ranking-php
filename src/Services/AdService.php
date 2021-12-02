@@ -27,6 +27,16 @@ class AdService {
     }
 
     /**
+     * Return relevant ads ordered by score
+     * 
+     * @return array Ad array 
+     */
+    public function getAllAdsByScore(): array {
+        $this->updateAdsScore(); // * Not necessary in real app  *
+        return $this->database->getAllAdsByScore();
+    }
+
+    /**
      * Method that update the score of all the ads in database
      * 
      * @return bool If it works properly returns true, false if not

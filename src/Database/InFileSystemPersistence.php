@@ -86,6 +86,29 @@ final class InFileSystemPersistence {
     }
 
     /**
+     * Return relevant ads in server ordered by score
+     * 
+     * @return array Ad array
+     */
+    public function getAllAdsByScore(): array{
+        $ads = [];
+
+        //Get relevant ads
+        foreach($this->ads as $ad){
+            if(is_null($ad->getIrrelevantSince())){
+                array_push($ads, $ad);
+            }
+        }
+
+        //Order ads
+        usort($ads, fn($a, $b) => $b->getScore() - $a->getScore());
+        
+        return $ads;
+    }
+    
+    
+
+    /**
      * Return irrelevant orders
      * 
      * @return array Ad array
