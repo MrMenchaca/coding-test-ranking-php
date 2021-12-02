@@ -53,6 +53,26 @@ final class InFileSystemPersistence {
 
         $this->ads[2]->addPicture($this->pictures[0]);
         $this->ads[2]->addPicture($this->pictures[1]);
+
+        $this->ads[3]->addPicture($this->pictures[0]);
+        $this->ads[3]->addPicture($this->pictures[1]);
+        $this->ads[3]->addPicture($this->pictures[2]);
+        $this->ads[3]->addPicture($this->pictures[3]);
+
+        $this->ads[4]->addPicture($this->pictures[0]);
+        $this->ads[4]->addPicture($this->pictures[1]);
+        $this->ads[4]->addPicture($this->pictures[2]);
+        $this->ads[4]->addPicture($this->pictures[3]);
+        $this->ads[4]->addPicture($this->pictures[4]);
+        $this->ads[4]->addPicture($this->pictures[5]);
+        $this->ads[4]->addPicture($this->pictures[6]);
+        $this->ads[4]->addPicture($this->pictures[7]);
+        
+        $this->ads[6]->addPicture($this->pictures[1]);
+        $this->ads[6]->addPicture($this->pictures[2]);
+        $this->ads[6]->addPicture($this->pictures[7]);
+        
+        $this->ads[7]->addPicture($this->pictures[1]);
     }
 
     // ---------------------------- Methods -------------------------------------------
