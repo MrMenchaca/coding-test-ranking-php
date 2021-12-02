@@ -85,8 +85,19 @@ final class InFileSystemPersistence {
         return true;
     }
 
-    function compare_counts(Ad $a, Ad $b) {
-        return $a->score - $b->score;
+    /**
+     * Return irrelevant orders
+     * 
+     * @return array Ad array
+     */
+    public function getIrrelevantAds(): array{
+        $ads = [];
+        foreach($this->ads as $ad){
+            if(!is_null($ad->getIrrelevantSince())){
+                array_push($ads, $ad);
+            }
+        }
+        return $ads;
     }
 
      /**

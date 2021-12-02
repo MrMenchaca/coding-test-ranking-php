@@ -17,17 +17,27 @@ class AdService {
 
     // ---------------------------- Methods -------------------------------------------
     /**
+     * Return irrelevant orders
+     * 
+     * @return array Ad array 
+     */
+    public function getIrrelevantAds(): array {
+        $this->updateAdsScore(); // * Not necessary in real app  *
+        return $this->database->getIrrelevantAds();
+    }
+
+    /**
      * Method that update the score of all the ads in database
      * 
      * @return bool If it works properly returns true, false if not
      */
     public function updateAdsScore(): bool {
-        $this->database = InFileSystemPersistence::getInstance(); //* Not necessary in real app * 
+        $this->database = InFileSystemPersistence::getInstance(); // * Not necessary in real app * 
         
         try{
             $ads = $this->database->getAllAds();
             $this->calculateAdsScores($ads);
-            $this->database->updateAds($ads); //* Not necessary in real app *
+            $this->database->updateAds($ads); // * Not necessary in real app *
         }
         catch(Exception $e){
             return false;

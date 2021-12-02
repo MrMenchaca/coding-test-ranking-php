@@ -27,6 +27,22 @@ class Controller {
                 '<html><body>'.$updateSuccesfull ? 'Éxito' : 'Error'.'</body></html>'
         );
     }
+
+    /**
+     * Endpoint that returns irrelevants ads with the date they became irrelevant
+     * 
+     * @Route("/getIrrelevantAds")
+     */
+    public function getIrrelevantAds(): Response
+    {
+        $this->service = new AdService();  //* Not necessary in real app *
+
+        $ads = $this->service->getIrrelevantAds();
+
+        return new Response(
+                '<html><body>Se obtuvieron: '.sizeof($ads).'</body></html>'
+        );
+    }
 }
 
 ?>
